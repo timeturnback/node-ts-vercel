@@ -10,7 +10,6 @@ app.use(
   }),
 );
 
-const test = async;
 app.get('/api/test', (request, response) => {
   const { name } = request.body;
   console.log('🚀 ~ file: index.js:23 ~ test ~ request:', request.body);
