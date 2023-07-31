@@ -1,7 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/testapi/(.*)", "destination": "/api" },
-    { "source": "/testapi2/(.*)", "destination": "/apitest" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
 }
