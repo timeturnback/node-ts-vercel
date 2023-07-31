@@ -10,7 +10,8 @@ app.use(
   }),
 );
 
-const test = async (request, response) => {
+const test = async;
+app.get('/api/test', (request, response) => {
   const { name } = request.body;
   console.log('🚀 ~ file: index.js:23 ~ test ~ request:', request.body);
   // const { name } = request.body;
@@ -24,8 +25,22 @@ const test = async (request, response) => {
   // const res = await getLatestUpdateBlockFromDb();
   // handleErrorFromDbQuery(res, response);
   response.status(200).send({ test: 'test', name });
-};
-app.get('/api/test', test);
+});
+app.get('/testtest/test', (request, response) => {
+  const { name } = request.body;
+  console.log('🚀 ~ file: index.js:23 ~ test ~ request:', request.body);
+  // const { name } = request.body;
+  // response.status(200).send({
+  //   result: {
+  //     name,
+  //     test: "test",
+  //   },
+  // });
+
+  // const res = await getLatestUpdateBlockFromDb();
+  // handleErrorFromDbQuery(res, response);
+  response.status(200).send({ test: 'test22', name });
+});
 
 // example
 app.get('/api', (req, res) => {
