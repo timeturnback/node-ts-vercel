@@ -1,6 +1,6 @@
-const app = require('express')();
-const bodyParser = require('body-parser');
-const { v4 } = require('uuid');
+import app from 'express';
+import bodyParser from 'body-parser';
+import { v4 } from 'uuid';
 
 app.use(bodyParser.json());
 app.use(
@@ -40,4 +40,4 @@ app.get('/api/item/:slug', (req, res) => {
   res.end(`Item: ${slug}`);
 });
 
-module.exports = app;
+export default app;
