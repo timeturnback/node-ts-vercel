@@ -25,7 +25,7 @@ app.get('/api/test', (request, response) => {
   // handleErrorFromDbQuery(res, response);
   response.status(200).send({ test: 'test', name });
 });
-app.get('/test-api/test', (request, response) => {
+app.get('/testapi/test', (request, response) => {
   const { name } = request.body;
   console.log('🚀 ~ file: index.js:23 ~ test ~ request:', request.body);
   // const { name } = request.body;
