@@ -1,113 +1,113 @@
-# node-typescript-boilerplate
+<p align="center">
+ <img width="100px" src="https://raw.githubusercontent.com/hebertcisco/vercel-typescript-express-api/cebd0c563141a4cc7d279997b8cb5dd9232d7591/.github/images/favicon512x512-vercel-typescript-express-api.png" align="center" alt=":package: vercel-typescript-express-api" />
+ <h2 align="center">:package: vercel-typescript-express-api</h2>
+ <p align="center">Rest API example to deploy in Vercel(Typescript, Express. MongoDB)</p>
+</p>
 
-[![Sponsor][sponsor-badge]][sponsor]
-[![TypeScript version][ts-badge]][typescript-5-0]
-[![Node.js version][nodejs-badge]][nodejs]
-[![APLv2][license-badge]][license]
-[![Build Status - GitHub Actions][gha-badge]][gha-ci]
+<p align="center">Did you like the project? Please, considerate <a href="https://www.buymeacoffee.com/hebertcisco">being a supporter</a>!</p>
 
-👩🏻‍💻 Developer Ready: A comprehensive template. Works out of the box for most [Node.js][nodejs] projects.
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/hebertcisco/vercel-typescript-express-api/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/hebertcisco/vercel-typescript-express-api/tree/main)
 
-🏃🏽 Instant Value: All basic tools included and configured:
+## Installation
 
-- [TypeScript][typescript] [5.0][typescript-5-0]
-- [ESM][esm]
-- [ESLint][eslint] with some initial rules recommendation
-- [Jest][jest] for fast unit testing and code coverage
-- Type definitions for Node.js and Jest
-- [Prettier][prettier] to enforce consistent code style
-- NPM [scripts](#available-scripts) for common operations
-- [EditorConfig][editorconfig] for consistent coding style
-- Reproducible environments thanks to [Volta][volta]
-- Example configuration for [GitHub Actions][gh-actions]
-- Simple example of TypeScript code and unit test
+> Clone this repository: `git clone https://github.com/hebertcisco/vercel-typescript-express-api`
 
-🤲 Free as in speech: available under the APLv2 license.
+### Open the directory and install the dependencies
 
-## Getting Started
-
-This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
-
-### Use as a repository template
-
-To start, just click the **[Use template][repo-template-action]** link (or the green button). Start adding your code in the `src` and unit tests in the `__tests__` directories.
-
-### Clone repository
-
-To clone the repository, use the following commands:
-
-```sh
-git clone https://github.com/jsynowiec/node-typescript-boilerplate
-cd node-typescript-boilerplate
+```bash
+cd vercel-typescript-express-api
 npm install
 ```
 
-### Download latest release
+## Running the API
 
-Download and unzip the current **main** branch or one of the tags:
+> Remember to create an `.env` file and put your database information.
+> Or run `npm run prepare:enviroment` to create it.
 
-```sh
-wget https://github.com/jsynowiec/node-typescript-boilerplate/archive/main.zip -O node-typescript-boilerplate.zip
-unzip node-typescript-boilerplate.zip && rm node-typescript-boilerplate.zip
+```bash
+npm run prepare:enviroment
 ```
 
-## Available Scripts
+```sh
+npm run dev
+```
+## Calling the API
 
-- `clean` - remove coverage data, Jest cache and transpiled files,
-- `prebuild` - lint source files and tests before building,
-- `build` - transpile TypeScript to ES6,
-- `build:watch` - interactive watch mode to automatically transpile source files,
-- `lint` - lint source files and tests,
-- `prettier` - reformat files,
-- `test` - run tests,
-- `test:watch` - interactive watch mode to automatically re-run tests
+### [Get status `/`](https://vercel-typescript-express-api.vercel.app/)
 
-## Additional Information
+```bash
+curl --location --request GET 'https://vercel-typescript-express-api.vercel.app/'
+```
 
-### Why include Volta
+### [Get all product `/product`](https://vercel-typescript-express-api.vercel.app/product)
 
-[Volta][volta]’s toolchain always keeps track of where you are, it makes sure the tools you use always respect the settings of the project you’re working on. This means you don’t have to worry about changing the state of your installed software when switching between projects. For example, it's [used by engineers at LinkedIn][volta-tomdale] to standardize tools and have reproducible development environments.
+```bash
+curl --location --request GET 'https://vercel-typescript-express-api.vercel.app/product'
+```
 
-I recommend to [install][volta-getting-started] Volta and use it to manage your project's toolchain.
+### [Get a product `/product/:productId`](https://vercel-typescript-express-api.vercel.app/product/a328cbb5-9663-4470-88c2-2ac9cc5c4871)
 
-### ES Modules
+```bash
+curl --location --request GET 'https://vercel-typescript-express-api.vercel.app/product/a328cbb5-9663-4470-88c2-2ac9cc5c4871'
+```
 
-This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.
+### Delete a product`/product/:productId`
 
-If your project requires CommonJS, you will have to [convert to ESM][sindresorhus-esm].
+```bash
+curl --location --request DELETE 'https://vercel-typescript-express-api.vercel.app/product/a328cbb5-9663-4470-88c2-2ac9cc5c4871'
+```
 
-Please do not open issues for questions regarding CommonJS or ESM on this repo.
+### Update a product `/product/:productId`
 
-## Backers & Sponsors
+```bash
+curl --location --request PUT 'https://vercel-typescript-express-api.vercel.app/product/a328cbb5-9663-4470-88c2-2ac9cc5c4871' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Apple iPhone 11 (64 GB) (PRODUCT) RED",
+    "slug": "Apple-iPhone-11-64-GB-PRODUCT-RED",
+    "quantity": 1,
+    "image": "https://m.media-amazon.com/images/I/715HCLsOHbL._AC_SX679_.jpg",
+    "price": "299845",
+    "description": "Repudiandae iure animi esse minus dolorem earum et. Eligendi in fugit. Dolor odio est harum veritatis error.",
+    "guarantee": "Sem garantia",
+    "brand": "Apple",
+    "model": "11"
+}'
+```
 
-Support this project by becoming a [sponsor][sponsor].
+### Create a product `/product`
 
-## License
+```bash
+curl --location --request POST 'https://vercel-typescript-express-api.vercel.app/product' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Apple iPhone 11 (64 GB) (PRODUCT) RED",
+    "slug": "Apple-iPhone-11-64-GB-PRODUCT-RED",
+    "quantity": 1,
+    "image": "https://m.media-amazon.com/images/I/715HCLsOHbL._AC_SX679_.jpg",
+    "price": "299845",
+    "description": "Repudiandae iure animi esse minus dolorem earum et. Eligendi in fugit. Dolor odio est harum veritatis error.",
+    "guarantee": "Sem garantia",
+    "brand": "Apple",
+    "model": "11"
+}'
+```
 
-Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/main/LICENSE) file for details.
+## 🤝 Contributing
 
-[ts-badge]: https://img.shields.io/badge/TypeScript-5.0-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2018.12-blue.svg
-[nodejs]: https://nodejs.org/dist/latest-v18.x/docs/api/
-[gha-badge]: https://github.com/jsynowiec/node-typescript-boilerplate/actions/workflows/nodejs.yml/badge.svg
-[gha-ci]: https://github.com/jsynowiec/node-typescript-boilerplate/actions/workflows/nodejs.yml
-[typescript]: https://www.typescriptlang.org/
-[typescript-5-0]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/
-[license-badge]: https://img.shields.io/badge/license-APLv2-blue.svg
-[license]: https://github.com/jsynowiec/node-typescript-boilerplate/blob/main/LICENSE
-[sponsor-badge]: https://img.shields.io/badge/♥-Sponsor-fc0fb5.svg
-[sponsor]: https://github.com/sponsors/jsynowiec
-[jest]: https://facebook.github.io/jest/
-[eslint]: https://github.com/eslint/eslint
-[wiki-js-tests]: https://github.com/jsynowiec/node-typescript-boilerplate/wiki/Unit-tests-in-plain-JavaScript
-[prettier]: https://prettier.io
-[volta]: https://volta.sh
-[volta-getting-started]: https://docs.volta.sh/guide/getting-started
-[volta-tomdale]: https://twitter.com/tomdale/status/1162017336699838467?s=20
-[gh-actions]: https://github.com/features/actions
-[repo-template-action]: https://github.com/jsynowiec/node-typescript-boilerplate/generate
-[esm]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-[sindresorhus-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-[nodejs-esm]: https://nodejs.org/docs/latest-v16.x/api/esm.html
-[ts47-esm]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#esm-nodejs
-[editorconfig]: https://editorconfig.org
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+Or buy me a coffee 🙌🏾
+
+<a href="https://www.buymeacoffee.com/hebertcisco">
+    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hebertcisco&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" />
+</a>
+
+## 📝 License
+
+Copyright © 2023 [Hebert F Barros](https://github.com/hebertcisco).<br />
+This project is [MIT](LICENSE) licensed.
